@@ -81,6 +81,29 @@ resource "aws_wafv2_web_acl" "this" {
   }
 
   rule {
+    name     = "03-AWSManagedRulesSQLiRuleSet"
+    priority = 4
+
+    override_action {
+      count {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesSQLiRuleSet"
+        vendor_name = "AWS"
+
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "03-AWSManagedRulesSQLiRuleSetMetrics"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
     name     = "98-SuspiciousRequestFlagger"
     priority = 98
 
