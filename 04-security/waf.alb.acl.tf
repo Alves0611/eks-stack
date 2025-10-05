@@ -36,6 +36,51 @@ resource "aws_wafv2_web_acl" "this" {
   }
 
   rule {
+    name     = "01-AWSManagedRulesAmazonIpReputationList"
+    priority = 2
+
+    override_action {
+      count {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "01-AWSManagedRulesAmazonIpReputationListMetrics"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
+    name     = "02-AWSManagedRulesAnonymousIpList"
+    priority = 3
+
+    override_action {
+      count {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAnonymousIpList"
+        vendor_name = "AWS"
+
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "02-AWSManagedRulesAnonymousIpListMetrics"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  rule {
     name     = "98-SuspiciousRequestFlagger"
     priority = 98
 
