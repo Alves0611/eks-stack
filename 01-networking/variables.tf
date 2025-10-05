@@ -48,7 +48,7 @@ variable "vpc_resources" {
     public_route_table_name   = "public-rt"
     private_route_table_1a    = "private-rt-1a"
     private_route_table_1b    = "private-rt-1b"
-    enable_nat_gateway        = true
+    enable_nat_gateway        = false
     nat_gateway_1a            = "nat-1a"
     nat_gateway_1b            = "nat-1b"
     elastic_ip_nat_gateway_1a = "eip-nat-1a"
@@ -93,10 +93,10 @@ variable "vpc_resources" {
         map_public_ip_on_launch = true
       },
       {
-        name                    = "observability-private-1b"
+        name                    = "observability-public-1b"
         availability_zone       = "us-east-1b"
         cidr_block              = "10.0.0.160/27"
-        map_public_ip_on_launch = false
+        map_public_ip_on_launch = true
       }
     ]
   }
