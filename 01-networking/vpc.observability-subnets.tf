@@ -8,7 +8,8 @@ resource "aws_subnet" "observability" {
 
   tags = merge(
     {
-      Name = "${var.vpc_resources.name}-${var.vpc_resources.observability_subnets[count.index].name}"
+      Name    = "${var.vpc_resources.name}-${var.vpc_resources.observability_subnets[count.index].name}"
+      Purpose = "observability"
     },
     var.tags
   )
