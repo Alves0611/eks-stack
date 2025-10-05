@@ -57,3 +57,8 @@ variable "tags" {
     Project   = "eks-stack"
   }
 }
+
+variable "custom_domain" {
+  type    = string
+  default = "gabrielstudying.click"
+}
