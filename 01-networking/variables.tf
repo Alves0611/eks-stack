@@ -17,6 +17,7 @@ variable "vpc_resources" {
     nat_gateway_1b            = string
     elastic_ip_nat_gateway_1a = string
     elastic_ip_nat_gateway_1b = string
+    eks_cluster_name_tag      = string
 
     public_subnets = list(object({
       name                    = string,
@@ -45,6 +46,7 @@ variable "vpc_resources" {
     nat_gateway_1b            = "nat-1b"
     elastic_ip_nat_gateway_1a = "eip-nat-1a"
     elastic_ip_nat_gateway_1b = "eip-nat-1b"
+    eks_cluster_name_tag      = "studying-cluster"
 
     public_subnets = [
       {
