@@ -8,5 +8,6 @@ resource "aws_subnet" "publics" {
 
   tags = {
     Name = "${var.vpc_resources.name}-${var.vpc_resources.public_subnets[count.index].name}"
+    "kubernetes.io/role/elb" = "1"
   }
 }
