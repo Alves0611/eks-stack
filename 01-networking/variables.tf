@@ -32,10 +32,17 @@ variable "vpc_resources" {
       availability_zone       = string
       map_public_ip_on_launch = bool
     }))
+
+    observability_subnets = list(object({
+      name                    = string
+      cidr_block              = string
+      availability_zone       = string
+      map_public_ip_on_launch = bool
+    }))
   })
 
   default = {
-    name                      = "nsse-vpc"
+    name                      = "eks-stack-vpc"
     cidr_block                = "10.0.0.0/24"
     internet_gateway          = "igw"
     public_route_table_name   = "public-rt"
@@ -75,6 +82,21 @@ variable "vpc_resources" {
         availability_zone       = "us-east-1b"
         cidr_block              = "10.0.0.96/27"
         map_public_ip_on_launch = false,
+      }
+    ]
+
+    observability_subnets = [
+      {
+        name                    = "observability-public-1a"
+        availability_zone       = "us-east-1a"
+        cidr_block              = "10.0.0.128/27"
+        map_public_ip_on_launch = true
+      },
+      {
+        name                    = "observability-private-1b"
+        availability_zone       = "us-east-1b"
+        cidr_block              = "10.0.0.160/27"
+        map_public_ip_on_launch = false
       }
     ]
   }
