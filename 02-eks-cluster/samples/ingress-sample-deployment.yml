@@ -39,6 +39,7 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 443}]'
     alb.ingress.kubernetes.io/target-type: ip
     external-dns.alpha.kubernetes.io/hostname: gabrielstudying.click
+    alb.ingress.kubernetes.io/wafv2-acl-arn: arn:aws:wafv2:us-east-1:444065722670:regional/webacl/waf-eks-stack-webacl/8fb092af-223b-4779-912c-b41c229a7358
 spec:
   ingressClassName: alb
   rules:
