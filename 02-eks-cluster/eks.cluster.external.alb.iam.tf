@@ -8,7 +8,7 @@ resource "aws_iam_role" "load_balancer_controller" {
         Effect = "Allow"
         Action = "sts:AssumeRoleWithWebIdentity"
         Principal = {
-          Service = aws_iam_openid_connect_provider.kubernetes.arn
+          Federated = aws_iam_openid_connect_provider.kubernetes.arn
         }
         Condition = {
           StringEquals = {
